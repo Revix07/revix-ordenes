@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REVIX - Historial</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="menu">
+  <div class="marca-menu">REVIX</div>
+  <div class="menu-botones">
+    <button type="button" onclick="irNuevaOrden()">+ Nueva orden</button>
+  </div>
+</header>
+
+<main class="panel-historial">
+  <div class="titulo-historial">
+    <div>
+      <h1>Historial de órdenes</h1>
+      <p>Equipos recibidos por REVIX</p>
+    </div>
+    <div class="contador"><span id="cantidadOrdenes">0</span> órdenes</div>
+  </div>
+
+  <div class="buscador">
+    <input
+      type="text"
+      id="buscador"
+      placeholder="Buscar cliente, teléfono, modelo, IMEI o número de orden..."
+      oninput="cargarHistorial()"
+    >
+  </div>
+
+  <div class="tabla-contenedor">
+    <table>
+      <thead>
+        <tr>
+          <th>Orden</th>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Teléfono</th>
+          <th>Equipo</th>
+          <th>Motivo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tablaHistorial"></tbody>
+    </table>
+  </div>
+
+  <div id="sinOrdenes" class="sin-ordenes">Todavía no hay órdenes guardadas.</div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

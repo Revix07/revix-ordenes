@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REVIX - Orden de Recepción</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="menu no-imprimir">
+  <div class="marca-menu">REVIX</div>
+  <div class="menu-botones">
+    <button type="button" onclick="nuevaOrden()">+ Nueva orden</button>
+    <button type="button" class="boton-secundario" onclick="abrirHistorial()">Historial</button>
+  </div>
+</header>
+
+<main class="hoja">
+  <div class="encabezado">
+    <div class="marca-impresion">
+      <h1>REVIX</h1>
+      <p>Servicio Técnico de Celulares</p>
+    </div>
+
+    <div class="numero-orden">
+      <label for="numeroOrden">N° de orden</label>
+      <input type="text" id="numeroOrden" readonly>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+  <h2>ORDEN DE RECEPCIÓN</h2>
+
+  <div class="fila">
+    <div class="campo">
+      <label for="fecha">Fecha</label>
+      <input type="date" id="fecha">
+    </div>
+    <div class="campo">
+      <label for="hora">Hora</label>
+      <input type="time" id="hora">
+    </div>
+  </div>
+
+  <h3>DATOS DEL CLIENTE</h3>
+
+  <div class="fila">
+    <div class="campo campo-grande">
+      <label for="cliente">Nombre y apellido</label>
+      <input type="text" id="cliente" placeholder="Nombre completo">
+    </div>
+    <div class="campo campo-telefono">
+      <label for="telefono">Teléfono</label>
+      <input type="tel" id="telefono" placeholder="Número de contacto">
+    </div>
+  </div>
+
+  <h3>DATOS DEL EQUIPO</h3>
+
+  <div class="fila">
+    <div class="campo">
+      <label for="marca">Marca</label>
+      <input type="text" id="marca" placeholder="Samsung, Apple, Xiaomi...">
+    </div>
+    <div class="campo">
+      <label for="modelo">Modelo</label>
+      <input type="text" id="modelo" placeholder="Ej: Galaxy A16">
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="imei">IMEI / Número de serie</label>
+    <input type="text" id="imei" placeholder="Opcional">
+  </div>
+
+  <div class="fila fila-doble-texto">
+    <div class="campo">
+      <label for="falla">¿Qué tiene el celular?</label>
+      <textarea id="falla" rows="3" placeholder="Ej: pantalla rota, no carga, no enciende..."></textarea>
+    </div>
+    <div class="campo">
+      <label for="motivo">¿Por qué ingresa al servicio técnico?</label>
+      <textarea id="motivo" rows="3" placeholder="Trabajo solicitado por el cliente"></textarea>
+    </div>
+  </div>
+
+  <div class="campo">
+    <label for="estado">Estado físico al recibirlo</label>
+    <textarea id="estado" rows="2" placeholder="Rayones, golpes, pantalla partida..."></textarea>
+  </div>
+
+  <div class="campo">
+    <label for="accesorios">Accesorios entregados</label>
+    <input type="text" id="accesorios" placeholder="Funda, cargador, SIM, caja o ninguno">
+  </div>
+
+  <div class="campo">
+    <label for="observaciones">Observaciones</label>
+    <textarea id="observaciones" rows="2" placeholder="Información adicional"></textarea>
+  </div>
+
+  <h3>FIRMA DEL CLIENTE</h3>
+
+  <p class="texto-legal">
+    El cliente declara que los datos indicados son correctos y entrega el equipo
+    en las condiciones detalladas anteriormente.
+  </p>
+
+  <canvas id="firmaCanvas"></canvas>
+
+  <button type="button" class="boton-secundario no-imprimir" onclick="limpiarFirma()">Limpiar firma</button>
+
+  <div class="pie-impresion">¡Gracias por confiar en REVIX!</div>
+
+  <div class="acciones no-imprimir">
+    <button type="button" onclick="guardarOrden()">Guardar orden</button>
+    <button type="button" onclick="guardarEImprimir()">Guardar e imprimir</button>
+    <button type="button" class="boton-secundario" onclick="imprimirOrden()">Imprimir</button>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

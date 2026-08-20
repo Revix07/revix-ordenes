@@ -1,0 +1,8 @@
+{
+  "name": "revix-ordenes",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@netlify/database": "latest"
+  }
+}
