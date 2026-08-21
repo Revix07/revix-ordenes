@@ -218,6 +218,19 @@ async function guardarEImprimirPDF() {
 
     if (ventanaPDF) ventanaPDF.close();
 
+    alert("No se pudo crear el comprobante para imprimir.");  
+  }
+}
+function imprimirComprobantePDF() {
+  try {
+    const { doc } = crearComprobantePDF();
+
+    doc.autoPrint();
+
+    const urlPDF = doc.output("bloburl");
+    window.open(urlPDF, "_blank");
+  } catch (error) {
+    console.error(error);
     alert("No se pudo crear el comprobante para imprimir.");
   }
 }
