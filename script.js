@@ -804,7 +804,9 @@ async function guardarEImprimir() {
     setTimeout(
       () => {
 
-        window.print();
+        const { doc } = crearComprobantePDF();
+doc.autoPrint();
+window.open(doc.output("bloburl"), "_blank");
 
       },
       250
