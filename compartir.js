@@ -81,7 +81,7 @@ function crearComprobantePDF() {
   y += 5;
   campoPDF(doc, "Marca", orden.marca, izq, y, 58, 9);
   campoPDF(doc, "Modelo", orden.modelo, 74, y, 62, 9);
-  campoPDF(doc, "IMEI / Serie", orden.imei, 140, y, 58, 9);
+  campoPDF(doc, "Formato de pago", orden.imei, 140, y, 58, 9);
 
   y += 17;
   campoPDF(doc, "¿Qué tiene el celular?", orden.falla, izq, y, 90, 17);
@@ -92,7 +92,7 @@ function crearComprobantePDF() {
 
   y += 19;
   campoPDF(doc, "Accesorios entregados", orden.accesorios, izq, y, 90, 9);
-  campoPDF(doc, "Observaciones", orden.observaciones, 108, y, 90, 9);
+  campoPDF(doc, "Valor reparación", orden.observaciones, 108, y, 90, 9);
 
   y += 17;
   doc.setTextColor(6,58,96);
