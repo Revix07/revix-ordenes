@@ -188,8 +188,14 @@ async function compartirComprobante() {
   }
 }
 async function guardarEImprimirPDF() {
+  const ventanaPDF = window.open("", "_blank");
+
   const guardada = await guardarOrden(false);
-  if (!guardada) return;
+
+  if (!guardada) {
+    if (ventanaPDF) ventanaPDF.close();
+    return;
+  }
 
   try {
     const { doc } = crearComprobantePDF();
@@ -197,10 +203,18 @@ async function guardarEImprimirPDF() {
     doc.autoPrint();
 
     const urlPDF = doc.output("bloburl");
-    window.open(urlPDF, "_blank");
+
+    if (ventanaPDF) {
+      ventanaPDF.location.href = urlPDF;
+    } else {
+      window.location.href = urlPDF;
+    }
 
   } catch (error) {
     console.error(error);
+
+    if (ventanaPDF) ventanaPDF.close();
+
     alert("No se pudo crear el comprobante para imprimir.");
   }
 }
