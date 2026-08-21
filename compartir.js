@@ -187,3 +187,20 @@ async function compartirComprobante() {
     alert("No se pudo crear o compartir el comprobante.");
   }
 }
+async function guardarEImprimirPDF() {
+  const guardada = await guardarOrden(false);
+  if (!guardada) return;
+
+  try {
+    const { doc } = crearComprobantePDF();
+
+    doc.autoPrint();
+
+    const urlPDF = doc.output("bloburl");
+    window.open(urlPDF, "_blank");
+
+  } catch (error) {
+    console.error(error);
+    alert("No se pudo crear el comprobante para imprimir.");
+  }
+}
