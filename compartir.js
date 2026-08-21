@@ -81,7 +81,7 @@ function crearComprobantePDF() {
   y += 5;
   campoPDF(doc, "Marca", orden.marca, izq, y, 58, 9);
   campoPDF(doc, "Modelo", orden.modelo, 74, y, 62, 9);
-  campoPDF(doc, "Formato de pago", orden.imei, 140, y, 58, 9);
+  campoPDF(doc, "Forma de pago", orden.imei, 140, y, 58, 9);
 
   y += 17;
   campoPDF(doc, "¿Qué tiene el celular?", orden.falla, izq, y, 90, 17);
