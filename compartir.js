@@ -138,13 +138,16 @@ function crearComprobantePDF() {
     doc.text(lineas, izq, y);
     y += lineas.length * 2.35 + 1.2;
   }
-
+if (y > 280) {
+  doc.addPage();
+  y = 15;
+}
   doc.setDrawColor(7,75,128);
-  doc.line(izq, 288, der, 288);
+  doc.line(izq, y + 2, der, y + 2);
   doc.setTextColor(7,75,128);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(8);
-  doc.text("¡Gracias por confiar en REVIX!", 105, 292, { align: "center" });
+  doc.text("¡Gracias por confiar en REVIX!", 105, y + 7, { align: "center" });
 
   return { doc, orden };
 }
