@@ -234,3 +234,60 @@ function imprimirComprobantePDF() {
     alert("No se pudo crear el comprobante para imprimir.");
   }
 }
+function generarFacturaFinal() {
+const orden = obtenerDatosFormulario();
+
+const fechaEntrega = new Date();
+
+const fechaVencimiento = new Date(fechaEntrega);
+fechaVencimiento.setDate(fechaVencimiento.getDate() + 30);
+  const formatoFecha = (fecha) =>
+  fecha.toLocaleDateString("es-VE", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  });
+
+const entregaTexto = formatoFecha(fechaEntrega);
+const vencimientoTexto = formatoFecha(fechaVencimiento);
+  const { jsPDF } = window.jspdf;
+const doc = new jsPDF({
+  orientation: "portrait",
+  unit: "mm",
+  format: "a4"
+});
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(18);
+doc.text("REVIX", 15, 18);
+
+doc.setFontSize(14);
+doc.text("FACTURA FINAL DE REPARACIÓN", 105, 30, { align: "center" });
+
+doc.setFontSize(10);
+doc.text(`Fecha de entrega: ${entregaTexto}`, 15, 42);
+doc.text(`Vencimiento de garantía: ${vencimientoTexto}`, 15, 49);
+  doc.setFont("helvetica", "bold");
+doc.setFontSize(11);
+doc.text("DATOS DEL CLIENTE", 15, 62);
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(10);
+doc.text(`Nombre: ${orden.nombre || ""}`, 15, 70);
+doc.text(`Teléfono: ${orden.telefono || ""}`, 15, 77);
+
+doc.setFont("helvetica", "bold");
+doc.text("DATOS DEL EQUIPO", 15, 90);
+
+doc.setFont("helvetica", "normal");
+doc.text(`Marca: ${orden.marca || ""}`, 15, 98);
+doc.text(`Modelo: ${orden.modelo || ""}`, 15, 105);
+  doc.setFont("helvetica", "bold");
+doc.text("DETALLES DE LA REPARACIÓN", 15, 118);
+
+doc.setFont("helvetica", "normal");
+doc.text(`Trabajo realizado: ${orden.motivo || ""}`, 15, 126);
+doc.text(`Valor de la reparación: ${orden.observaciones || ""}`, 15, 133);
+  const urlPDF = doc.output("bloburl");
+window.open(urlPDF, "_blank");
+}
