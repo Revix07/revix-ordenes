@@ -288,6 +288,7 @@ doc.text("DETALLES DE LA REPARACIÓN", 15, 118);
 doc.setFont("helvetica", "normal");
 doc.text(`Trabajo realizado: ${orden.motivo || ""}`, 15, 126);
 doc.text(`Valor de la reparación: ${orden.observaciones || ""}`, 15, 133);
+  doc.text(`Forma de pago: ${orden.imei || ""}`, 15, 140);
   const urlPDF = doc.output("bloburl");
 window.open(urlPDF, "_blank");
 }
