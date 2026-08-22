@@ -257,7 +257,14 @@ function generarFacturaFinal() {
     unit: "mm",
     format: "a4"
   });
-
+// MARCA DE AGUA REVIX
+doc.setTextColor(225, 230, 235);
+doc.setFont("helvetica", "bold");
+doc.setFontSize(55);
+doc.text("REVIX", 105, 155, {
+  align: "center",
+  angle: 45
+});
   const azul = [6, 58, 96];
   const azulClaro = [7, 75, 128];
   const gris = [245, 247, 249];
