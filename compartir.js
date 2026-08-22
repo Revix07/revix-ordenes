@@ -289,6 +289,18 @@ doc.setFont("helvetica", "normal");
 doc.text(`Trabajo realizado: ${orden.motivo || ""}`, 15, 126);
 doc.text(`Valor de la reparación: ${orden.observaciones || ""}`, 15, 133);
   doc.text(`Forma de pago: ${orden.imei || ""}`, 15, 140);
+  const nombreFactura = `${orden.numeroOrden || "REVIX"}-factura-final.pdf`;
+const blob = doc.output("blob");
+const archivo = new File([blob], nombreFactura, { type: "application/pdf" });
+
+if (navigator.share && navigator.canShare && navigator.canShare({ files: [archivo] })) {
+  navigator.share({
+    title: `Factura final ${orden.numeroOrden || ""}`,
+    text: "Factura final de reparación REVIX",
+    files: [archivo]
+  });
+} else {
   const urlPDF = doc.output("bloburl");
-window.open(urlPDF, "_blank");
+  window.open(urlPDF, "_blank");
+}
 }
