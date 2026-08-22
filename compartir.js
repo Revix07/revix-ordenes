@@ -275,10 +275,10 @@ doc.text("REVIX", 105, 155, {
   doc.setTextColor(...azul);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(27);
-  doc.text("REVIX", izq, 20);
+  doc.text("REVIX", izq, 27);
 
   doc.setFontSize(8);
-  doc.text("SERVICIO TÉCNICO DE CELULARES", izq, 26);
+  doc.text("SERVICIO TÉCNICO DE CELULARES", izq, 33);
 
   doc.setTextColor(25);
   doc.setFontSize(22);
