@@ -74,6 +74,27 @@ function guardarTipoNegocio(tipo) {
 
 document.addEventListener("DOMContentLoaded", async () => {
 
+  const selectorTipoNegocio =
+    document.getElementById("tipoNegocio");
+
+  if (selectorTipoNegocio) {
+
+    selectorTipoNegocio.value =
+      obtenerTipoNegocio();
+
+    selectorTipoNegocio.addEventListener(
+      "change",
+      function () {
+
+        guardarTipoNegocio(
+          selectorTipoNegocio.value
+        );
+
+      }
+    );
+
+  }
+   
   if (document.getElementById("firmaCanvas")) {
     await iniciarFormulario();
   }
