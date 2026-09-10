@@ -2,6 +2,71 @@ let canvas = null;
 let ctx = null;
 let dibujando = false;
 
+/* =========================================
+   CONFIGURACIÓN DEL NEGOCIO
+========================================= */
+
+const TIPO_NEGOCIO_POR_DEFECTO = "servicio_tecnico";
+
+const TIPOS_NEGOCIO = {
+  servicio_tecnico: {
+    nombre: "Servicio técnico",
+    usaRut: false,
+    usaIva: false,
+    usaDescuento: false
+  },
+
+  electricista: {
+    nombre: "Electricista",
+    usaRut: true,
+    usaIva: true,
+    usaDescuento: true
+  },
+
+  restaurante: {
+    nombre: "Restaurante",
+    usaRut: true,
+    usaIva: true,
+    usaDescuento: true
+  },
+
+  tienda: {
+    nombre: "Tienda / Vendedor",
+    usaRut: true,
+    usaIva: true,
+    usaDescuento: true
+  },
+
+  taller: {
+    nombre: "Taller",
+    usaRut: true,
+    usaIva: true,
+    usaDescuento: true
+  },
+
+  otro: {
+    nombre: "Otro",
+    usaRut: false,
+    usaIva: false,
+    usaDescuento: false
+  }
+};
+
+function obtenerTipoNegocio() {
+  return (
+    localStorage.getItem("tipoNegocioRevix") ||
+    TIPO_NEGOCIO_POR_DEFECTO
+  );
+}
+
+function guardarTipoNegocio(tipo) {
+  localStorage.setItem(
+    "tipoNegocioRevix",
+    tipo
+  );
+}
+
+
 
 /* =========================================
    INICIO
